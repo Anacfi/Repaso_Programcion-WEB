@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <script src="Jquery_3.6.0.js" type="text/Javascript"></script> <!-- LINKEAMOS LA LIBRERIA -->
+    <title>Ejemplo Formulario validacion</title>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <ul class="navbar">
+        <li><a href="Principal.html">Inicio</a></li>
+        <li><a href="#">CSS</a></li>
+        <li class="active"><a href="JavaScript.html">JSS</a></li>
+        <li style="float:right"><a href="#">About</a></li>
+    </ul>
+
+    <ul class="Vnavbar">
+        <li><a href="mostrarocultar.html">Mostrar / Ocultar</a></li>
+        <li><a href="IntroTexto.html">Introducir texto</a></li>
+        <li><a href="jq_1.html">JQuery 1</a></li>
+        <li class="active"><a href="formulario_validacion.html">Formulario</a></li>
+
+    </ul>
+
+    <!-- ------------------------------------------------------ -->
+
+    <div class="content">
+        <h2>Interactuar con cajas de contenido</h2>
+        <h3>Interactuar con un label para introducir texto</h3>
+
+        <div id="DivAlert" style="display: none;">
+            Error en el formulario!
+        </div>
+
+        <form action="#" id="contacto" name="contacto" method="POST"> <!--NO TENEMOS NINGUNA BASE DE DATOS A DONDE ENVIAR LOS DATOS-->
+            <table>
+                <tr>
+                    <td><label for="txtNombre">Nombre</label></td>
+                    <td><input type="text" name="txtNombre" id="txtNombre"></td>
+                </tr>
+                <tr>
+                    <td><label for="txtMail">Mail</label></td>
+                    <td><input type="text" name="txtMail" id="txtMail"></td>
+                </tr>
+                <tr>
+                    <td><label for="ddlComuna">Comuna</label></td> <!-- Drop down list (ddl)-->
+                    <td><select name="ddlComuna" id="ddlComuna">
+                        <option></option>
+                        <option value="PR">Providencia</option>
+                        <option value="LF">La Florida</option>
+                        <option value="PÑ">Peñañolen</option>
+                        <option value="LR">La Reina</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td><label for="rdbNews">Desea recibir mail de noticias</label></td> <!-- Radio Button (rdb) -->
+                    <td><input type="radio" name="rdbNews" id="rdbNewsSI" value="si" checked>Si</td>
+                    <td><input type="radio" name="rdbNews" id="rdbNewsNO" value="no">No</td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Enviar"></td>
+                    <td></td>
+                </tr>
+            </table>
+        </form>
+
+        <pre class="explication">
+            <h3 style="text-align: center;">SE CREA UNA TABLA CON SUS OPCIONES</h3>
+                (label for="txtNombre")
+                (input type="text" name="txtNombre" id="txtNombre")
+                --------------------------------------------------- Un label vacio para texto normal
+                (label for="ddlComuna")
+                (select name="ddlComuna" id="ddlComuna") >> 
+                    (option /option) --- Un option vacio, es el primero para cuando la pagina recarge, este sea el primero que se muestre
+                    (option value="PR"> Providencia /option)
+                    (option value="LF"> La Florida /option)
+                --------------------------------------------------- Un label tipo 'Drop Down List' (ddl) para multiples opciones
+                (label for="rdbNews")
+                (input type="radio" name="rdbNews" id="rdbNewsSI" value="si" checked> Si) --- El 'checked' es para que salga ya marcado
+                (input type="radio" name="rdbNews" id="rdbNewsNO" value="no"> No)
+                ---------------------------------------------------- un label tipo 'Radio Button' (rdb) para marcador de preferencia
+                (input type="submit" value="Enviar")
+                ---------------------------------------------------- Un input de tipo 'submit' es una opcion para mandar TODOS los datos de un formulario
+
+            <h3 style="text-align: center;">DESPUES DEL BODY SE CREAN LOS SCRPITS CON LAS ACCIONES</h3>
+                var nombrePatron = new RegExp("^[a-z A-Z]{4,40}$"); /*EXPRESION REGULAR: plantillas o formatos (RegExp)*/
+                var mailPatron = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.]+.[a-zA-Z]{2,4}$");
+                ---------------------------------------------------- Esto llama a la clase de 'EXPRESION REGULAR' (RegExp) para definir un patron que se usara en los label de texto
+
+                function validaTexto(idInput, patron){
+                    return $(idInput).val().match(patron) ? true : false;
+                }
+                ---------------------------------------------------- Si la variable de id coincide con el patron definido = true o false
+
+                function validaSelect(idSelect){
+                    return $(idSelect).val() ? true : false;
+                }
+                ---------------------------------------------------- Si la variable de seleccion es ALGO (que no este vacio) = true o false
+
+                $( /*DOCUMENT READY*/
+                    function(){ --- Dentro del archivo precargado, creamos una funcion
+                        $("#contacto").submit( --- Cuando el formulario #contacto se "suba"...
+                            function(e){ --- Valide el contendio del formulario
+                                var valido = true;
+                                if(!validaTexto("#txtNombre", nombrePatron))
+                                {
+                                    valido = false;
+                                    $("#txtNombre").addClass("error");
+                                }
+
+                                if(!validaTexto("#txtMail", mailPatron))
+                                {
+                                    valido = false;
+                                    $("#txtMail").addClass("error");
+                                }
+                                if(!validaSelect("#ddlComuna"))
+                                {
+                                    valido = false;
+                                    $("#ddlComuna").addClass("error");
+                                }
+                                if(!valido)
+                                {
+                                    $("#DivAlert").show();
+                                    e.preventDefault();
+                                }
+                                else
+                                {
+                                    alert("Datos enviados");
+                                }
+                            }
+                        );
+
+                        $("#txtNombre").focusin(
+                            function()
+                            {
+                                $("#DivAlert").hide();
+                                $("#txtNombre").removeClass("error");
+                                $("#txtMail").removeClass("error");
+                                $("#ddlComuna").removeClass("error");
+                            }
+                        );
+                    }
+                );
+                
+        </pre>
+
+    </div>
+</body>
+
+<script>
+    var nombrePatron = new RegExp("^[a-z A-Z]{4,40}$"); /*EXPRESION REGULAR: plantillas o formatos (RegExp)*/
+    var mailPatron = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.]+.[a-zA-Z]{2,4}$");
+
+    function validaTexto(idInput, patron){
+        return $(idInput).val().match(patron) ? true : false; /* Si el id coincide con el patron devuelve true de lo contrario, false */
+    }
+
+    function validaSelect(idSelect){
+        return $(idSelect).val() ? true : false;
+    }
+
+    $( /*DOCUMENT READY*/
+        function(){
+            $("#contacto").submit(
+                function(e){
+                    var valido = true;
+                    if(!validaTexto("#txtNombre", nombrePatron))
+                    {
+                        valido = false;
+                        $("#txtNombre").addClass("error");
+                    }
+
+                    if(!validaTexto("#txtMail", mailPatron))
+                    {
+                        valido = false;
+                        $("#txtMail").addClass("error");
+                    }
+                    if(!validaSelect("#ddlComuna"))
+                    {
+                        valido = false;
+                        $("#ddlComuna").addClass("error");
+                    }
+                    if(!valido)
+                    {
+                        $("#DivAlert").show();
+                        e.preventDefault();
+                    }
+                    else
+                    {
+                        alert("Datos enviados");
+                    }
+                }
+            );
+
+            $("#txtNombre").focusin(
+                function()
+                {
+                    $("#DivAlert").hide();
+                    $("#txtNombre").removeClass("error");
+                    $("#txtMail").removeClass("error");
+                    $("#ddlComuna").removeClass("error");
+                }
+            );
+        }
+    );
+</script>
+</html>

@@ -1,0 +1,111 @@
+/*-------------------------------------------------------------*/
+body{
+    margin: 0;
+}
+/*-------------------------------------------------------------*/
+
+.navbar{
+    list-style-type: none; /*QUE NO SALGAN LOS PUNTITOS DE LA LISTA*/
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navbar li{
+    float: left; /*ESTO ES PARA QUE LA LISTA SE ORDENE HACIA LA IZQUIERDA*/
+}
+
+.navbar li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar li a:hover{
+    background-color: #111;
+}
+
+.active{
+    background-color: #4CAF50;
+}
+
+/*-------------------------------------------------------------*/
+
+.Vnavbar{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    top: 46px;
+    width: 18%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+.Vnavbar li a{
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.Vnavbar li a:hover{
+    background-color: #555;
+    color: white;
+}
+
+/*-------------------------------------------------------------*/
+
+.content{
+    margin-top: 3%;
+    margin-left: 18%;
+    padding: 10px;
+    height:900px;
+}
+
+/*-------------------------------------------------------------*/
+/* -----------------------IMPORTANTE--------------------------- */
+/*-------------------------------------------------------------*/
+
+/* -----------------------PRINCIPAL--------------------------- */
+.inicio{
+    margin: 0;
+    left: 0;
+    right: 0;
+    margin-top: 30px;
+    padding: 30px;
+}
+
+/* ----------------------- JAVA SCRIPT --------------------------- */
+.texto{
+    text-align: center;
+    padding: 30px;
+    background-color:#f1f1f1;
+}
+
+.explication{
+    text-align: justify;
+    margin-bottom: 20%;
+}
+
+#DivAlert{
+    background-color: rgba(255, 0, 0, 0.288);
+}
+
+form{
+    text-align: justify;
+    padding: 30px;
+    background-color:#f1f1f1;
+}
+
+.error{
+    border: 2px solid red;
+}

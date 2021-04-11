@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <title>JavaSript</title>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <ul class="navbar">
+        <li><a href="Principal.html">Inicio</a></li>
+        <li><a href="#">CSS</a></li>
+        <li class="active"><a href="JavaScript.html">JSS</a></li>
+        <li style="float:right"><a href="#">About</a></li>
+    </ul>
+
+    <ul class="Vnavbar">
+        <li class="active"><a href="mostrarocultar.html">Mostrar / Ocultar</a></li>
+        <li><a href="IntroTexto.html">Introducir texto</a></li>
+        <li><a href="jq_1.html">JQuery 1</a></li>
+        <li><a href="formulario_validacion.html">Formulario</a></li>
+
+    </ul>
+
+    <!-- ------------------------------------------------------ -->
+
+    <div class="content">
+        <h2>MOSTRAR Y OCULTAR</h2>
+        <h3>Interactuar con un boton para ver u ocultar un texto</h3>
+
+        <div>
+            <input type="button" value="MOSTRAR" onclick="mostrar();">
+            <input type="button" value="OCULTAR" onclick="ocultar();">
+        </div>
+
+        <p class="texto" id="texto">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+            Minus cum aperiam numquam placeat in maxime, facilis ipsum, 
+            labore unde nam earum dolor consectetur enim ex dolorem illo sit blanditiis, 
+            nostrum exercitationem sequi quam laborum illum. Aut cupiditate voluptatem, 
+            laudantium, reprehenderit nihil delectus libero nostrum ut enim debitis quibusdam, 
+            amet sit? Hic architecto ipsam earum debitis perspiciatis iure suscipit nostrum nobis, 
+            dolor iusto laudantium. Rem, ducimus quia qui quidem dolorem at exercitationem hic laudantium veniam? 
+            Magni voluptatem numquam dolorem similique sapiente nulla asperiores, 
+            odit alias in quos voluptatibus non officiis ullam modi laudantium eos aut? Dolorum, 
+            aliquid. Quaerat quas, illum odio tempore modi atque ipsa laborum. Minima, 
+            laboriosam deleniti quas adipisci temporibus corrupti, consectetur quibusdam error vel magni porro. 
+            Sint laborum ducimus vero et, ratione possimus minima aperiam asperiores, voluptatibus, 
+            repudiandae tenetur maiores omnis vitae officiis magnam aliquid! Veniam nobis dolorem molestias neque sapiente, 
+            eos magnam unde? Delectus eos mollitia, asperiores culpa veniam consequuntur nemo ab, deserunt perferendis, 
+            cum quae numquam aperiam deleniti nisi placeat. 
+            Eveniet iusto perspiciatis quasi provident dolore incidunt quia voluptas nesciunt voluptatem 
+            libero dolor quisquam ad maxime explicabo excepturi, recusandae labore error aliquam eaque expedita
+            mollitia officia! Dolor facilis nostrum quae eius accusantium accusamus odit cumque deserunt.
+            nostrum exercitationem sequi quam laborum illum. Aut cupiditate voluptatem, 
+            laudantium, reprehenderit nihil delectus libero nostrum ut enim debitis quibusdam, 
+            amet sit? Hic architecto ipsam earum debitis perspiciatis iure suscipit nostrum nobis, 
+            dolor iusto laudantium. Rem, ducimus quia qui quidem dolorem at exercitationem hic laudantium veniam? 
+            Magni voluptatem numquam dolorem similique sapiente nulla asperiores, 
+            odit alias in quos voluptatibus non officiis ullam modi laudantium eos aut? Dolorum, 
+            aliquid. Quaerat quas, illum odio tempore modi atque ipsa laborum. Minima, 
+            laboriosam deleniti quas adipisci temporibus corrupti, consectetur quibusdam error vel magni porro. 
+            Sint laborum ducimus vero et, ratione possimus minima aperiam asperiores, voluptatibus, 
+            repudiandae tenetur maiores omnis vitae officiis magnam aliquid! Veniam nobis dolorem molestias neque sapiente, 
+            eos magnam unde? Delectus eos mollitia, asperiores culpa veniam consequuntur nemo ab, deserunt perferendis, 
+            cum quae numquam aperiam deleniti nisi placeat. 
+            Eveniet iusto perspiciatis quasi provident dolore incidunt quia voluptas nesciunt voluptatem 
+            libero dolor quisquam ad maxime explicabo excepturi, recusandae labore error aliquam eaque expedita
+            mollitia officia! Dolor facilis nostrum quae eius accusantium accusamus odit cumque deserunt.
+        </p>
+
+        
+        <pre class="explication">
+            <h3 style="text-align: center;">SE CREAN LAS ACCIONES Y EL TIPO DE OBJETO</h3>
+            input type="button" value="MOSTRAR" onclick="mostrar();" -- Se crea un boton llamando a una funcion
+            input type="button" value="OCULTAR" onclick="ocultar();" -- "lo mismo"
+
+            <h3 style="text-align: center;">DESPUES DEL BODY SE CREAN LOS SCRPITS CON LAS ACCIONES</h3>
+            function mostrar(){
+                document.getElementById('texto').style.display = "block";
+            }
+            
+            function ocultar(){
+                document.getElementById('texto').style.display = "none";
+            }
+            ---
+            Se busca en el documento el elemento de 'texto' y se le asigna el estilo:
+            block: Que aparezca en formato bloque (que se muestre mas que nada)
+            None: Que no aparezca en ningun formato (Que no se muestre mas que nada)
+        </pre>
+        
+
+      </div>
+
+      
+
+</body>
+<script>
+    function mostrar(){
+        document.getElementById('texto').style.display = "block";
+    }
+    
+    function ocultar(){
+        document.getElementById('texto').style.display = "none";
+    }
+</script>
+</html>
